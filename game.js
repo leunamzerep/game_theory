@@ -94,10 +94,16 @@ $(document).ready(function () {
             chosenPrice: finalPrice
         };
 
-        let url = "https://script.google.com/macros/s/AKfycbzJZ9Haajfw5EUKom5rKWj5GW2oyQXp2Ss-jv91uRVVsO0jeakRbMyoZ6DX9B-GkpPGKQ/exec?" + new URLSearchParams(payload);
-
-        var img = new Image();
-        img.src = url;
+        fetch("https://script.google.com/macros/s/AKfycbzJZ9Haajfw5EUKom5rKWj5GW2oyQXp2Ss-jv91uRVVsO0jeakRbMyoZ6DX9B-GkpPGKQ/exec", {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(payload)
+        })
+            .then(() => {
+                console.log("Datos enviados!");
+            })
+            .catch(err => console.error("Error guardando:", err));
 
         $('#step' + step).hide();
         step++;
