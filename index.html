@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Duopoly</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/3358742.png">
+    <link rel="stylesheet" href="game.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="game.js"></script>
+</head>
+
+<body>
+    <div class="component" id="step1">
+        <h1 class="title"><i class="fa-solid fa-money-bill-1 fa-xs" style="color: #FFD43B; vertical-align:middle;"></i>
+            Bienvenidos a Duopoly <i class="fa-solid fa-money-bill-1 fa-xs"
+                style="color: #FFD43B; vertical-align:middle;"></i></h1>
+        <h2 class="description">Un juego de negociación para dos jugadores en donde podrán comprar y vender una
+            mercancía, ¡propongan su mejor precio y hagan el trato que más les convenga!</h2>
+        <h3 class="question">¿Listos para negociar?</h3>
+        <h4 class="tip">Escojan sus roles; ¡Comprador y vendedor!</h4>
+        <button class="next">¡Empecemos!</button>
+    </div>
+    <div class="component" id="step2" style="display:none">
+        <h1 class="title">Jugador 1: Vendedor</h1>
+        <h2 class="description">Te daremos la información de tu producto, ¡No dejes que el comprador vea la pantalla!
+        </h2>
+        <button class="next">Ver mi producto</button>
+    </div>
+    <div class="component" id="step3" style="display:none">
+        <h1 class="title">¡Play Station 5!</h1>
+        <img src="images/ps5.webp" />
+        <h2 class="description">Solo la usaste 5 veces, está en buenas condiciones, incluye control y la vendes en su
+            caja original</h2>
+        <h3 class="question">Veamos cuánto pedir por este producto</h3>
+        <button class="next">¡A vender!</button>
+    </div>
+    <div class="component" id="step4" style="display:none">
+        <h3 class="question">¿Cuánto crees que vale esta playstation 5?</h3>
+        <div class="validation">
+            <input type="text" class="moneyInput" id="percievedValueBySeller" value="$" pattern="\d*"
+                inputmode="numeric">
+            <span class="advertencia">Valor entre 6 y 7 dígitos requeridos por motivos estadísticos</span>
+        </div>
+        <h3 class="question">¿Cuál sería el precio mínimo que aceptarías por la consola?</h3>
+        <div class="validation">
+            <input type="text" class="moneyInput" id="topPriceBySeller" value="$" pattern="\d*" inputmode="numeric">
+            <span class="advertencia">Valor entre 6 y 7 dígitos requeridos por motivos estadísticos</span>
+        </div>
+        <h3 class="question">¿Qué precio le propondrías al comprador para llegar a un trato?</h3>
+        <div class="validation">
+            <input type="text" class="moneyInput" id="proposedPriceBySeller" value="$" pattern="\d*"
+                inputmode="numeric">
+            <span class="advertencia">Valor entre 6 y 7 dígitos requeridos por motivos estadísticos</span>
+        </div>
+        <button class="next" style="margin-top: 20px;">Continuar</button>
+    </div>
+    <div class="component" id="step5" style="display:none">
+        <h1 class="title"><i class="fa-solid fa-money-bill-1 fa-xs" style="color: #FFD43B; vertical-align:middle;"></i>
+            ¡Perfecto! <i class="fa-solid fa-money-bill-1 fa-xs" style="color: #FFD43B; vertical-align:middle;"></i>
+        </h1>
+        <h2 class="description">Hemos guardado tus perspectivas Vendedor, es hora de que el Comprador le eche un ojo al
+            producto</h2>
+        <h3 class="question">Pasa el dispositivo, ¡Y no veas!</h3>
+        <button class="next">¡Tu turno!</button>
+    </div>
+    <div class="component" id="step6" style="display:none">
+        <h1 class="title">Jugador 2: Comprador</h1>
+        <h2 class="description">Te daremos la información del producto, ¡No dejes que el vendedor vea la pantalla!</h2>
+        <button class="next">Ver el producto</button>
+    </div>
+    <div class="component" id="step7" style="display:none">
+        <h1 class="title">¡Play Station 5!</h1>
+        <img src="images/ps5.webp" />
+        <h2 class="description">Consola de videojuegos en buenas condiciones, incluye control y es entregada en su caja
+            original</h2>
+        <h3 class="question">Tienes el dinero suficiente para comprarla y planeas usarla como regalo</h3>
+        <h3 class="question">Veamos cuánto ofrecer por este producto</h3>
+        <button class="next">Continuar</button>
+    </div>
+    <div class="component" id="step8" style="display:none">
+        <h3 class="question">¿Cuánto crees que vale esta playstation 5?</h3>
+        <div class="validation">
+            <input type="text" class="moneyInput" id="percievedValueByBuyer" value="$" pattern="\d*"
+                inputmode="numeric">
+            <span class="advertencia">Valor entre 6 y 7 dígitos requeridos por motivos estadísticos</span>
+        </div>
+        <h3 class="question">¿Cuál sería el precio máximo que pagarías por la consola?</h3>
+        <div class="validation">
+            <input type="text" class="moneyInput" id="topPriceByBuyer" value="$" pattern="\d*" inputmode="numeric">
+            <span class="advertencia">Valor entre 6 y 7 dígitos requeridos por motivos estadísticos</span>
+        </div>
+        <h3 class="question">¿Qué precio le propondrías al vendedor para llegar a un trato?</h3>
+        <div class="validation">
+            <input type="text" class="moneyInput" id="proposedPriceByBuyer" value="$" pattern="\d*" inputmode="numeric">
+            <span class="advertencia">Valor entre 6 y 7 dígitos requeridos por motivos estadísticos</span>
+        </div>
+        <button class="next" style="margin-top: 20px;">Continuar</button>
+    </div>
+    <div class="component" id="step9" style="display:none">
+        <h1 class="title">¡Perfecto! <i class="fa-solid fa-money-bill-1 fa-xs"
+                style="color: #FFD43B; vertical-align:middle;"></i></h1>
+        <h2 class="description">Hemos guardado tus perspectivas Comprador, es hora de pactar un precio</h2>
+        <h3 class="question">Les mostraremos 5 opciones de precios para que decidan</h3>
+        <h4 class="tip">Escojan cuál de ellos pactar o abandonar la negociación</h4>
+        <button class="next">¡A negociar!</button>
+    </div>
+    <div class="component" id="step10" style="display:none">
+        <h1 class="title">¿Qué precio desean pactar? <i class="fa-solid fa-money-bill-1 fa-xs"
+                style="color: #FFD43B; vertical-align:middle;"></i></h1>
+        <button class="prices" id="price1"></button>
+        <button class="prices" id="price2"></button>
+        <button class="prices" id="price3"></button>
+        <button class="prices" id="price4"></button>
+        <button class="prices" id="price5"></button>
+        <button class="prices" style="margin-top: 20px;">Abandonar negociación</button>
+    </div>
+    <!-- TODO si se ve necesario: agregar validación con contraseña (solicitada en cada paso vendedor-comprador) para evitar que comprador seleccione precio sin consultar a vendedor -->
+    <div class="component" id="step11" style="display:none">
+        <h1 class="title">¡Gracias por jugar Duopoly!</h1>
+        <h2 class="description">Tu participación aporta al proceso académico sus creadores</h2>
+        <h3 class="question">Invita a otras personas a jugar:</h3>
+        <button class="copyLink">Copiar enlace</button>
+        <h1 class="title">¡Hasta la próxima!</h1>
+        <h1 class="title"><i class="fa-solid fa-money-bill-1 fa-xs"
+                style="color: #FFD43B; vertical-align:middle;"></i><i class="fa-solid fa-money-bill-1 fa-xs"
+                style="color: #FFD43B; vertical-align:middle;"></i><i class="fa-solid fa-money-bill-1 fa-xs"
+                style="color: #FFD43B; vertical-align:middle;"></i></h1>
+    </div>
+</body>
+
+</html>

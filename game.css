@@ -1,0 +1,100 @@
+body {
+    background-color: rgb(255, 228, 196);
+    padding: 50px;
+    font-family: 'Times New Roman', sans-serif;
+}
+
+img {
+    width: 60%;
+    max-width: 333px;
+    height: auto;
+}
+
+input {
+    background-color: rgb(185, 185, 185);
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    width: fit-content;
+}
+
+.component {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 30px;
+    padding: 40px;
+    width: 70%;
+    height: fit-content;
+    max-height: 80%;
+    overflow-y: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.next {
+    background-color: rgb(252, 201, 36);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: fit-content;
+}
+
+.prices {
+    background-color: rgb(252, 201, 36);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: fit-content;
+}
+
+.copyLink {
+    background-color: rgb(252, 201, 36);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: fit-content;
+}
+
+.tip {
+    margin-top: -20px;
+}
+
+.validation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.advertencia {
+    color: rgb(202, 95, 45);
+    font-size: 12px;
+    line-height: 15px;
+    display: none;
+}
