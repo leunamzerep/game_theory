@@ -96,10 +96,8 @@ $(document).ready(function () {
 
         let url = "https://script.google.com/macros/s/AKfycbzJZ9Haajfw5EUKom5rKWj5GW2oyQXp2Ss-jv91uRVVsO0jeakRbMyoZ6DX9B-GkpPGKQ/exec?" + new URLSearchParams(payload);
 
-        fetch(url)
-            .then(r => r.json())
-            .then(r => console.log("Guardado en Sheets:", r))
-            .catch(err => console.error("Error guardando:", err));
+        var img = new Image();
+        img.src = url;
 
         $('#step' + step).hide();
         step++;
