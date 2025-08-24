@@ -94,7 +94,7 @@ $(document).ready(function () {
             chosenPrice: finalPrice
         };
 
-        fetch("https://script.google.com/macros/s/AKfycbyEoNOSTxd6Y5Vd_I9AEtFRbKSis3n3lmC2U0cQfs3xfN4gDFFYCkVjdbwK7JaXQPJf/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbzJZ9Haajfw5EUKom5rKWj5GW2oyQXp2Ss-jv91uRVVsO0jeakRbMyoZ6DX9B-GkpPGKQ/exec", {
             method: "POST",
             body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" }
