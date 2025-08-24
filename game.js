@@ -141,4 +141,8 @@ $(document).ready(function () {
             console.error("Error al copiar: ", err);
         });
     });
+
+    $(".restart").on("click", function () {
+        location.reload();
+    });
 });
