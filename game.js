@@ -83,7 +83,7 @@ $(document).ready(function () {
             finalPrice = "NN";
         }
 
-        let data = {
+        var payload = {
             sellerPercieved: percievedValueBySeller,
             sellerTop: topPriceBySeller,
             sellerProposed: proposedPriceBySeller,
@@ -94,14 +94,12 @@ $(document).ready(function () {
             chosenPrice: finalPrice
         };
 
-        fetch("https://script.google.com/macros/s/AKfycbzJZ9Haajfw5EUKom5rKWj5GW2oyQXp2Ss-jv91uRVVsO0jeakRbMyoZ6DX9B-GkpPGKQ/exec", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" }
-        })
-            .then(res => res.json())
-            .then(res => console.log("Guardado en Sheets:", res))
-            .catch(err => console.error("Error:", err));
+        let url = "https://script.google.com/macros/s/AKfycbzJZ9Haajfw5EUKom5rKWj5GW2oyQXp2Ss-jv91uRVVsO0jeakRbMyoZ6DX9B-GkpPGKQ/exec?" + new URLSearchParams(payload);
+
+        fetch(url)
+            .then(r => r.json())
+            .then(r => console.log("Guardado en Sheets:", r))
+            .catch(err => console.error("Error guardando:", err));
 
         $('#step' + step).hide();
         step++;
