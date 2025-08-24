@@ -6,7 +6,7 @@ body {
 
 img {
     width: 60%;
-    max-width: 333px;
+    max-width: 150px;
     height: auto;
 }
 
@@ -21,6 +21,18 @@ input {
     width: fit-content;
 }
 
+h1 {
+    margin: 10px 0;
+}
+
+h2 {
+    margin: 8px 0;
+}
+
+h3 {
+    margin: 5px 0;
+}
+
 .component {
     position: fixed;
     top: 50%;
@@ -29,14 +41,14 @@ input {
     background-color: white;
     border-radius: 30px;
     padding: 40px;
-    width: 70%;
+    width: 50%;
     height: fit-content;
-    max-height: 80%;
+    max-height: 70%;
     overflow-y: auto;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     justify-content: space-between;
     align-items: center;
 }
@@ -82,7 +94,7 @@ input {
 }
 
 .tip {
-    margin-top: -20px;
+    margin-top: -15px;
 }
 
 .validation {
@@ -97,4 +109,36 @@ input {
     font-size: 12px;
     line-height: 15px;
     display: none;
+}
+
+@media (max-width: 1024px) {
+    .component {
+        width: 65%;
+        max-height: 75%;
+        padding: 30px;
+    }
+
+    img {
+        max-width: 100px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    h4 {
+        font-size: 14px;
+    }
+
+    .advertencia {
+        font-size: 13px;
+    }
 }

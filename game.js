@@ -8,6 +8,7 @@ $(document).ready(function () {
     var topPriceByBuyer;
     var proposedPriceByBuyer;
     var averagePrice;
+    var finalPrice;
 
     $(".next").on("click", function () {
         error = false;
@@ -51,7 +52,7 @@ $(document).ready(function () {
                 percievedValueByBuyer = parseInt($("#percievedValueByBuyer").val().replace(/\D/g, ""));
                 topPriceByBuyer = parseInt($("#topPriceByBuyer").val().replace(/\D/g, ""));
                 proposedPriceByBuyer = parseInt($("#proposedPriceByBuyer").val().replace(/\D/g, ""));
-                averagePrice = (topPriceBySeller + proposedPriceBySeller + topPriceByBuyer + proposedPriceByBuyer) / 4;
+                averagePrice = Math.round((topPriceBySeller + proposedPriceBySeller + topPriceByBuyer + proposedPriceByBuyer) / 4);
 
                 let prices = [
                     averagePrice,
@@ -74,7 +75,34 @@ $(document).ready(function () {
         }
     });
 
-    $(" .prices").on("click", function () {
+    $(".prices").on("click", function () {
+
+        if ($(this).text() !== "Abandonar negociación") {
+            finalPrice = parseInt($(this).text().replace(/\D/g, ""));
+        } else {
+            finalPrice = "NN";
+        }
+
+        let data = {
+            sellerPercieved: percievedValueBySeller,
+            sellerTop: topPriceBySeller,
+            sellerProposed: proposedPriceBySeller,
+            buyerPercieved: percievedValueByBuyer,
+            buyerTop: topPriceByBuyer,
+            buyerProposed: proposedPriceByBuyer,
+            average: averagePrice,
+            chosenPrice: finalPrice
+        };
+
+        fetch("https://script.google.com/macros/s/AKfycbyEoNOSTxd6Y5Vd_I9AEtFRbKSis3n3lmC2U0cQfs3xfN4gDFFYCkVjdbwK7JaXQPJf/exec", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(res => res.json())
+            .then(res => console.log("Guardado en Sheets:", res))
+            .catch(err => console.error("Error:", err));
+
         $('#step' + step).hide();
         step++;
         $('#step' + step).show();
