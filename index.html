@@ -32,15 +32,15 @@
     <div class="component" id="step3" style="display:none">
         <h1 class="title">¡Play Station 5!</h1>
         <img src="images/ps5.webp" />
-        <h2 class="description">La usaste solo 5 veces, está en buenas condiciones, incluye control y la vendes en su
+        <h2 class="description">Está en buenas condiciones, incluye control y la vendes en su
             caja original</h2>
-        <h3 class="question">Veamos cuánto pedir por este producto</h3>
-        <button class="next">¡A vender!</button>
-    </div>
-    <div class="component" id="step4" style="display:none">
-        <h3 class="question">¿Cuánto crees que vale esta playstation 5?</h3>
-        <div class="validation">
-            <input type="text" class="moneyInput" id="percievedValueBySeller" value="$" pattern="\d*"
+            <h3 class="question">Veamos cuánto pedir por este producto</h3>
+            <button class="next">¡A vender!</button>
+        </div>
+        <div class="component" id="step4" style="display:none">
+            <h3 class="question">¿Cuánto crees que vale esta playstation 5?</h3>
+            <div class="validation">
+                <input type="text" class="moneyInput" id="percievedValueBySeller" value="$" pattern="\d*"
                 inputmode="numeric">
             <span class="advertencia">Valor entre 6 y 7 dígitos requeridos por motivos estadísticos</span>
         </div>
@@ -52,12 +52,44 @@
         <h3 class="question">¿Qué precio le propondrías al comprador para llegar a un trato?</h3>
         <div class="validation">
             <input type="text" class="moneyInput" id="proposedPriceBySeller" value="$" pattern="\d*"
-                inputmode="numeric">
+            inputmode="numeric">
             <span class="advertencia">Valor entre 6 y 7 dígitos requeridos por motivos estadísticos</span>
         </div>
         <button class="next" style="margin-top: 20px;">Continuar</button>
     </div>
     <div class="component" id="step5" style="display:none">
+        <h1 class="title">Censo al vendedor</h1>
+        <h2 class="question">¿Te gustan los videojuegos o conoces de consolas?</h2>
+        <div class="controlContainer">
+            <div class="control" id="sellerExpert">
+                <div class="validation">
+                    <h4>Si</h4>
+                    <input type="checkbox" class="census" id="sellerExpertTrue">
+                </div>
+                <div class="validation">
+                    <h4>No</h4>
+                    <input type="checkbox" class="census" id="sellerExpertFalse">
+                </div>
+            </div>
+            <span class="advertencia">Seleccione una respuesta</span>
+        </div>
+        <h2 class="question" style="margin-top: 5px;">¿Cuál es tu género de nacimiento?</h2>
+        <div class="controlContainer">
+            <div class="control" id="sellerGender">
+                <div class="validation">
+                    <h4>Hombre</h4>
+                    <input type="checkbox" class="census" id="sellerMale">
+                </div>
+                <div class="validation">
+                    <h4>Mujer</h4>
+                    <input type="checkbox" class="census" id="sellerFemale">
+                </div>
+            </div>
+            <span class="advertencia">Seleccione una respuesta</span>
+        </div>
+        <button class="next" style="margin-top: 20px;">Continuar</button>
+    </div>
+    <div class="component" id="step6" style="display:none">
         <h1 class="title"><i class="fa-solid fa-money-bill-1 fa-xs" style="color: #FFD43B; vertical-align:middle;"></i>
             ¡Perfecto! <i class="fa-solid fa-money-bill-1 fa-xs" style="color: #FFD43B; vertical-align:middle;"></i>
         </h1>
@@ -67,21 +99,20 @@
         <h3 class="question">Pasa el dispositivo, ¡Y no veas!</h3>
         <button class="next" style="margin-top: 12px;">Continuar</button>
     </div>
-    <div class="component" id="step6" style="display:none">
+    <div class="component" id="step7" style="display:none">
         <h1 class="title">Jugador 2: Comprador</h1>
         <h2 class="description">Te daremos la información del producto, ¡No dejes que el vendedor vea la pantalla!</h2>
         <button class="next">Ver el producto</button>
     </div>
-    <div class="component" id="step7" style="display:none">
+    <div class="component" id="step8" style="display:none">
         <h1 class="title">¡Play Station 5!</h1>
         <img src="images/ps5.webp" />
         <h2 class="description">Consola de videojuegos en buenas condiciones, incluye control y es entregada en su caja
             original</h2>
-        <h3 class="question">Tienes el dinero suficiente para comprarla y planeas usarla como regalo, veamos cuánto
-            ofrecer por este producto</h3>
+        <h3 class="question">Veamos cuánto ofrecer por este producto</h3>
         <button class="next">Continuar</button>
     </div>
-    <div class="component" id="step8" style="display:none">
+    <div class="component" id="step9" style="display:none">
         <h3 class="question">¿Cuánto crees que vale esta playstation 5?</h3>
         <div class="validation">
             <input type="text" class="moneyInput" id="percievedValueByBuyer" value="$" pattern="\d*"
@@ -100,7 +131,39 @@
         </div>
         <button class="next" style="margin-top: 20px;">Continuar</button>
     </div>
-    <div class="component" id="step9" style="display:none">
+    <div class="component" id="step10" style="display:none">
+        <h1 class="title">Censo al comprador</h1>
+        <h2 class="question">¿Te gustan los videojuegos o conoces de consolas?</h2>
+        <div class="controlContainer">
+            <div class="control" id="buyerExpert">
+                <div class="validation">
+                    <h4>Si</h4>
+                    <input type="checkbox" class="census" id="buyerExpertTrue">
+                </div>
+                <div class="validation">
+                    <h4>No</h4>
+                    <input type="checkbox" class="census" id="buyerExpertFalse">
+                </div>
+            </div>
+            <span class="advertencia">Seleccione una respuesta</span>
+        </div>
+        <h2 class="question" style="margin-top: 5px;">¿Cuál es tu género de nacimiento?</h2>
+        <div class="controlContainer">
+            <div class="control" id="buyerGender">
+                <div class="validation">
+                    <h4>Hombre</h4>
+                    <input type="checkbox" class="census" id="buyerMale">
+                </div>
+                <div class="validation">
+                    <h4>Mujer</h4>
+                    <input type="checkbox" class="census" id="buyerFemale">
+                </div>
+            </div>
+            <span class="advertencia">Seleccione una respuesta</span>
+        </div>
+        <button class="next" style="margin-top: 20px;">Continuar</button>
+    </div>
+    <div class="component" id="step11" style="display:none">
         <h1 class="title">¡Perfecto! <i class="fa-solid fa-money-bill-1 fa-xs"
                 style="color: #FFD43B; vertical-align:middle;"></i></h1>
         <h2 class="description">Hemos guardado tus perspectivas Comprador, es hora de pactar un precio</h2>
@@ -108,7 +171,7 @@
         <h4 class="tip">Escojan cuál de ellos pactar o abandonar la negociación</h4>
         <button class="next">¡A negociar!</button>
     </div>
-    <div class="component" id="step10" style="display:none">
+    <div class="component" id="step12" style="display:none">
         <h1 class="title">¿Qué precio desean pactar? <i class="fa-solid fa-money-bill-1 fa-xs"
                 style="color: #FFD43B; vertical-align:middle;"></i></h1>
         <button class="prices" id="price1"></button>
@@ -119,7 +182,7 @@
         <button class="prices" style="margin-top: 20px;">Abandonar negociación</button>
     </div>
     <!-- TODO si se ve necesario: agregar validación con contraseña (solicitada en cada paso vendedor-comprador) para evitar que comprador seleccione precio sin consultar a vendedor -->
-    <div class="component" id="step11" style="display:none">
+    <div class="component" id="step13" style="display:none">
         <h1 class="title">¡Gracias por jugar Duopoly!</h1>
         <h2 class="description">Tu participación aporta al proceso académico de sus creadores</h2>
         <h3 class="question">Invita a más personas a jugar, o hazlo de nuevo con al menos un jugador diferente.</h3>

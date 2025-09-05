@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     $(".next").on("click", function () {
         error = false;
-        if (step === 4 || step === 8) {
+        if (step === 4 || step === 9) {
 
             let prefix = (step === 4) ? "Seller" : "Buyer";
 
@@ -38,14 +38,31 @@ $(document).ready(function () {
             } else {
                 $("#proposedPriceBy" + prefix).next().hide();
             }
+        } else if (step === 5 || step === 10) {
+            let prefix = (step === 5) ? "seller" : "buyer";
+            if (!($("#" + prefix + "ExpertTrue").prop("checked")) && !$("#" + prefix + "ExpertFalse").prop("checked")) {
+                error = true;
+                $("#" + prefix + "Expert").next().show();
+            } else {
+                $("#" + prefix + "Expert").next().hide();
+            }
+            if (!($("#" + prefix + "Male").prop("checked")) && !$("#" + prefix + "Female").prop("checked")) {
+                error = true;
+                $("#" + prefix + "Gender").next().show();
+            } else {
+                $("#" + prefix + "Gender").next().hide();
+            }
         }
 
-        if (error) {
+        if (error && (step === 4 || step === 9)) {
             alert("Por favor, complete todos los campos con 6 o 7 dígitos.");
+            return;
+        } else if (error && (step === 5 || step === 10)) {
+            alert("Por favor, responde las preguntas.");
             return;
         } else {
             error = false;
-            if (step == 8) {
+            if (step == 10) {
                 percievedValueBySeller = parseInt($("#percievedValueBySeller").val().replace(/\D/g, ""));
                 topPriceBySeller = parseInt($("#topPriceBySeller").val().replace(/\D/g, ""));
                 proposedPriceBySeller = parseInt($("#proposedPriceBySeller").val().replace(/\D/g, ""));
@@ -53,6 +70,11 @@ $(document).ready(function () {
                 topPriceByBuyer = parseInt($("#topPriceByBuyer").val().replace(/\D/g, ""));
                 proposedPriceByBuyer = parseInt($("#proposedPriceByBuyer").val().replace(/\D/g, ""));
                 averagePrice = Math.round((topPriceBySeller + proposedPriceBySeller + topPriceByBuyer + proposedPriceByBuyer) / 4);
+
+                sellerKnows = $("#sellerExpertTrue").prop("checked") ? 1 : 0;
+                buyerKnows = $("#buyerExpertTrue").prop("checked") ? 1 : 0;
+                sellerMale = $("#sellerMale").prop("checked") ? 1 : 0;
+                buyerMale = $("#buyerMale").prop("checked") ? 1 : 0;
 
                 let prices = [
                     averagePrice,
@@ -75,6 +97,48 @@ $(document).ready(function () {
         }
     });
 
+    $("#sellerExpertTrue").on("change", function () {
+        if ($("#sellerExpertFalse").prop("checked")) {
+            $("#sellerExpertFalse").prop("checked", false);
+        }
+    });
+    $("#sellerExpertFalse").on("change", function () {
+        if ($("#sellerExpertTrue").prop("checked")) {
+            $("#sellerExpertTrue").prop("checked", false);
+        }
+    });
+    $("#buyerExpertTrue").on("change", function () {
+        if ($("#buyerExpertFalse").prop("checked")) {
+            $("#buyerExpertFalse").prop("checked", false);
+        }
+    });
+    $("#buyerExpertFalse").on("change", function () {
+        if ($("#buyerExpertTrue").prop("checked")) {
+            $("#buyerExpertTrue").prop("checked", false);
+        }
+    });
+
+    $("#sellerMale").on("change", function () {
+        if ($("#sellerFemale").prop("checked")) {
+            $("#sellerFemale").prop("checked", false);
+        }
+    });
+    $("#sellerFemale").on("change", function () {
+        if ($("#sellerMale").prop("checked")) {
+            $("#sellerMale").prop("checked", false);
+        }
+    });
+    $("#buyerMale").on("change", function () {
+        if ($("#buyerFemale").prop("checked")) {
+            $("#buyerFemale").prop("checked", false);
+        }
+    });
+    $("#buyerFemale").on("change", function () {
+        if ($("#buyerMale").prop("checked")) {
+            $("#buyerMale").prop("checked", false);
+        }
+    });
+    
     $(".prices").on("click", function () {
 
         if ($(this).text() !== "Abandonar negociación") {
@@ -91,7 +155,11 @@ $(document).ready(function () {
             buyerTop: topPriceByBuyer,
             buyerProposed: proposedPriceByBuyer,
             average: averagePrice,
-            chosenPrice: finalPrice
+            chosenPrice: finalPrice,
+            sellerKnows: sellerKnows,
+            buyerKnows: buyerKnows,
+            sellerMale: sellerMale,
+            buyerMale: buyerMale
         };
 
         fetch("https://script.google.com/macros/s/AKfycbzJZ9Haajfw5EUKom5rKWj5GW2oyQXp2Ss-jv91uRVVsO0jeakRbMyoZ6DX9B-GkpPGKQ/exec", {

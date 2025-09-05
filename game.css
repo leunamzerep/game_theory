@@ -33,6 +33,10 @@ h3 {
     margin: 5px 0;
 }
 
+h4 {
+    margin: 3px 0;
+}
+
 .component {
     position: fixed;
     top: 50%;
@@ -127,6 +131,15 @@ h3 {
     font-size: 12px;
     line-height: 15px;
     display: none;
+}
+
+.control {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 33.3px;
+    margin-bottom: 8px;
 }
 
 @media (max-width: 1024px) {
