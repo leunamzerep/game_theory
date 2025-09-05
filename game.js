@@ -94,6 +94,23 @@ $(document).ready(function () {
             $('#step' + step).hide();
             step++;
             $('#step' + step).show();
+
+            if (step === 2) {
+                $(".eyes").css("display", "flex");
+                $(".sellerNotAllow").hide();
+                $(".buyerAllow").hide();
+            } else if (step === 6) {
+                $(".buyerAllow").show();
+                $(".buyerNotAllow").hide();
+            } else if (step === 7) {
+                $(".sellerNotAllow").show();
+                $(".sellerAllow").hide();
+            } else if (step === 11) {
+                $(".sellerNotAllow").hide();
+                $(".sellerAllow").show();
+            } else if (step === 13) {
+                $(".eyes").hide();
+            }
         }
     });
 

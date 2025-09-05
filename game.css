@@ -45,9 +45,9 @@ h4 {
     background-color: white;
     border-radius: 30px;
     padding: 40px;
-    width: 50%;
+    width: 55%;
     height: fit-content;
-    max-height: 70%;
+    max-height: 60%;
     overflow-y: auto;
     text-align: center;
     display: flex;
@@ -142,9 +142,17 @@ h4 {
     margin-bottom: 8px;
 }
 
+.eyes {
+    position: fixed;
+    top: 2px;
+    left: 50%;
+    transform: translate(-50%);
+    display: none;
+}
+
 @media (max-width: 1024px) {
     .component {
-        width: 65%;
+        width: 70%;
         max-height: 75%;
         padding: 30px;
     }
@@ -171,5 +179,9 @@ h4 {
 
     .advertencia {
         font-size: 13px;
+    }
+
+    .eyes {
+        top: 33.3px;
     }
 }
