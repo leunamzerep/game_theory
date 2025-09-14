@@ -52,6 +52,12 @@ $(document).ready(function () {
             } else {
                 $("#" + prefix + "Gender").next().hide();
             }
+            if ($("#" + prefix + "Age").val().length < 1) {
+                error = true;
+                $("#" + prefix + "Age").next().show();
+            } else {
+                $("#" + prefix + "Age").next().hide();
+            }
         }
 
         if (error && (step === 4 || step === 9)) {
@@ -75,6 +81,8 @@ $(document).ready(function () {
                 buyerKnows = $("#buyerExpertTrue").prop("checked") ? 1 : 0;
                 sellerMale = $("#sellerMale").prop("checked") ? 1 : 0;
                 buyerMale = $("#buyerMale").prop("checked") ? 1 : 0;
+                sellerAge = parseInt($("#sellerAge").val());
+                buyerAge = parseInt($("#buyerAge").val());
 
                 let prices = [
                     averagePrice,
@@ -176,7 +184,9 @@ $(document).ready(function () {
             sellerKnows: sellerKnows,
             buyerKnows: buyerKnows,
             sellerMale: sellerMale,
-            buyerMale: buyerMale
+            buyerMale: buyerMale,
+            sellerAge: sellerAge,
+            buyerAge: buyerAge
         };
 
         fetch("https://script.google.com/macros/s/AKfycbzJZ9Haajfw5EUKom5rKWj5GW2oyQXp2Ss-jv91uRVVsO0jeakRbMyoZ6DX9B-GkpPGKQ/exec", {
@@ -210,6 +220,15 @@ $(document).ready(function () {
         let formatted = val.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         $(this).val(formatted + " $");
         setCaret(this, formatted.length);
+    });
+
+    $(".ageInput").on("input", function () {
+        let val = $(this).val().replace(/\D/g, "");
+        if (val.startsWith("0")) {
+            val = val.replace(/^0+/, "");
+        }
+        val = val.slice(0, 2);
+        $(this).val(val);
     });
 
     function setCaret(el, pos) {

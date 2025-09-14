@@ -150,6 +150,13 @@ h4 {
     display: none;
 }
 
+.controlContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
 @media (max-width: 1024px) {
     .component {
         width: 70%;
